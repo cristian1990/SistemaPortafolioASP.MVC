@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace SistemaPortafolio.Controllers
 {
-    public class DefaultController : Controller
+    public class HomeController : Controller
     {
-        // GET: Default
+        // GET: Home
         public ActionResult Index()
         {
             return View();
