@@ -133,6 +133,7 @@
     <Content Include="Areas\Admin\Assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Areas\Admin\Views\Experiencia\Crud.cshtml" />
     <Content Include="Areas\Admin\Views\Habilidades\Crud.cshtml" />
+    <Content Include="Areas\Admin\Views\Testimonios\Crud.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
