@@ -2,8 +2,8 @@
     Layout = null;
     string controlador = ViewContext.RouteData.Values["Controller"].ToString().ToLower();
 
-    //Para mostrar la foto de cada usuario Logueado, obtenemos el id del usuario
-    Models.Usuario usuario = new Models.Usuario().Obtener(Helper.SessionHelper.GetUser());
+    //Para mostrar la foto (Chiquita) de cada usuario Logueado, obtenemos el id del usuario y control del Login
+    Models.Usuario usuario = controlador == "login" ? new Usuario() : new Usuario().Obtener(Helper.SessionHelper.GetUser());
 }
 <!DOCTYPE html>
 <html lang="es">

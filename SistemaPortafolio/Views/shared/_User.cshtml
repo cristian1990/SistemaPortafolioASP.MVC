@@ -1,17 +1,22 @@
-﻿<!--Congigurar el web.config-->
+﻿<!--Configurar el web.config-->
 @model Usuario
 
 <div id="user">
     <div class="user-container-fixed">
         <div class="user-container">
-            <h1>Eduardo Rodriguez Patiño</h1>
-            <img class="pic" src="~/uploads/20200727210410.jpg" title="Cristian Silva" />
+            <h1>@Model.Nombre @Model.Apellido</h1>
+            <img class="pic" src="~/uploads/@Model.Foto" title="@Model.Nombre @Model.Apellido" />
             <span class="title">Teléfono</span>
-            <span class="description">+51-999-9999</span>
+            <span class="description">@Model.Telefono</span>
             <span class="title">Email</span>
-            <span class="description"><a>erodriguez@anexsoft.com</a></span>
+            <span class="description">
+                <a href="mailto:@Model.Email">@Model.Email</a> <!--Podemos abrir con algun programa de Email-->
+            </span>
             <span class="title">Dirección</span>
-            <span class="description">Av. Los Informáticos 105<br />Lima / Perú</span>
+            <span class="description">
+                @Model.Direccion<br />
+                @Model.Ciudad / @Model.Pais.Descripcion
+            </span>
         </div>
     </div>
 </div>

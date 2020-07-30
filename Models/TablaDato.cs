@@ -48,5 +48,28 @@ namespace Models
 
             return datos;
         }
+
+        //Para traer el Pais
+        public TablaDato Obtener(string relacion, string valor)
+        {
+            var dato = new TablaDato();
+
+            try
+            {
+                using (var ctx = new AppContext())
+                {
+                    dato = ctx.TablaDato.Where(x => x.Relacion == relacion)
+                                        .Where(x => x.Valor == valor)
+                                        .SingleOrDefault();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return dato;
+        }
     }
 }

@@ -18,7 +18,6 @@ namespace SistemaPortafolio.Areas.Admin.Controllers
         [NoLogin]
         public ActionResult Index()
         {
-
             return View();
         }
 

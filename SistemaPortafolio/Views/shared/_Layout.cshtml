@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var usuario_id = SistemaPortafolio.App_Start.FrontOfficeStartUp.UsuarioVisualizando();
+    var usuario = new Usuario().Obtener(usuario_id);
+}
+
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <title>@ViewBag.Title</title>
@@ -10,9 +15,9 @@
 <body>
 
     <div id="cv-container">
-        @Html.Partial("~/Views/shared/_user.cshtml")
+        @Html.Partial("~/Views/shared/_user.cshtml", usuario)<!--Paso el usuario a la vista parcial-->
         <div id="content">
-            @Html.Partial("~/views/shared/_MenuAdicional.cshtml")
+            @Html.Partial("~/views/shared/_MenuAdicional.cshtml", usuario) <!--Paso el usuario a la vista parcial-->
             <div class="content-container container-fluid">
 
                 @RenderBody()

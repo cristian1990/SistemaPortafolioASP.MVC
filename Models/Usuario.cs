@@ -63,11 +63,15 @@ namespace Models
         [StringLength(50)]
         public string Foto { get; set; }
 
+
         public virtual ICollection<Experiencia> Experiencia { get; set; }
 
         public virtual ICollection<Habilidad> Habilidad { get; set; }
 
         public virtual ICollection<Testimonio> Testimonio { get; set; }
+
+        [NotMapped]
+        public TablaDato Pais { get; set; }
 
 
         //VALIDAMOS LAS CREDENCIALES DEL USUARIO ANTES DE ACCEDER
@@ -108,7 +112,7 @@ namespace Models
         }
 
         //OBTENEMOS EL ID DEL USUARIO ACTUAL, (Para mostrar la foto)
-        public Usuario Obtener(int id)
+        public Usuario Obtener(int id, bool includes = false)
         {
             var usuario = new Usuario();
 
@@ -116,13 +120,26 @@ namespace Models
             {
                 using (var ctx = new AppContext())
                 {
-                    usuario = ctx.Usuario.Where(x => x.id == id) //Busco al usuario por Id
-                                         .SingleOrDefault();
+                    if (!includes)
+                    {
+                        usuario = ctx.Usuario.Where(x => x.id == id)
+                                             .SingleOrDefault();
+                    }
+                    else
+                    {
+                        usuario = ctx.Usuario.Include("Experiencia")
+                                             .Include("Habilidad")
+                                             .Include("Testimonio")
+                                             .Where(x => x.id == id)
+                                             .SingleOrDefault();
+                    }
+
+                    // Trayendo un registro adicional de manera manual, sin usar Include
+                    usuario.Pais = new TablaDato().Obtener("pais", usuario.Pais_id.ToString());
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
                 throw;
             }
 
