@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Mail; //Necesario para correo
 using System.Web;
 using System.Web.Mvc;
+using Rotativa.MVC;
 
 namespace SistemaPortafolio.Controllers
 {
@@ -62,6 +63,19 @@ namespace SistemaPortafolio.Controllers
             }
 
             return Json(rm);
+        }
+
+        //PARA PDF
+        public ActionResult ExportaAPDF()
+        {
+            return new ActionAsPdf("PDF");
+        }
+
+        //Para la vista PDF, ignoramos el _Layout y tampoco es parcial
+        public ActionResult PDF()
+        {
+            //Retornamos una vista y le pasamo el usuario actual
+            return View(usuario.Obtener(FrontOfficeStartUp.UsuarioVisualizando(), true));
         }
     }
 }
